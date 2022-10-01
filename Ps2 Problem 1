@@ -1,0 +1,6 @@
+monthlyInterestRate = annualInterestRate/12
+for i in range (1,13):
+    monthlyUnpaidBalance = balance-monthlyPaymentRate*balance
+    balance = monthlyUnpaidBalance + monthlyInterestRate*monthlyUnpaidBalance
+    i+=1
+print("Remaining Balance: " + str(round(balance, 2)))
