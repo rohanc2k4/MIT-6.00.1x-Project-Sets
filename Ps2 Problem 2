@@ -1,0 +1,13 @@
+monthlyInterestRate = (annualInterestRate/12)
+lowestPayment = 0
+unpaidBalance = balance
+
+while unpaidBalance > 0:
+    lowestPayment+=10
+    for i in range (0,12):
+           unpaidBalance = unpaidBalance-lowestPayment
+           unpaidBalance = unpaidBalance+unpaidBalance*monthlyInterestRate
+    if unpaidBalance > 0:
+        unpaidBalance = balance
+    
+print("Lowest Payment: " + str(lowestPayment))
