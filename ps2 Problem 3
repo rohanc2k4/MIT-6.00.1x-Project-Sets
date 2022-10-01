@@ -1,0 +1,21 @@
+monthlyInterestRate = annualInterestRate/12
+lowerbound = balance/12
+upperbound = (balance * (1 + monthlyInterestRate)**12) / 12.0
+
+epsilon = 0.01
+unpaidBalance = balance
+
+while abs(unpaidBalance) >= epsilon:
+    monthlyPayment = (upperbound + lowerbound)/2
+    for i in range (0,12):
+           unpaidBalance = unpaidBalance-monthlyPayment
+           unpaidBalance = unpaidBalance+unpaidBalance*monthlyInterestRate
+    if unpaidBalance > 0 and abs(unpaidBalance) > epsilon:
+        unpaidBalance = balance
+        lowerbound = monthlyPayment
+    elif unpaidBalance < 0:
+        unpaidBalance = balance
+        upperbound = monthlyPayment
+    else:
+        break
+print("Lowest Payment: " + str(round(monthlyPayment, 2)))
