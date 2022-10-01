@@ -1,0 +1,6 @@
+def keysWithValue(aDict, target):
+    key_list = []
+    for key in aDict:
+        if aDict[key] == target:
+            key_list.append(key)
+    return key_list
