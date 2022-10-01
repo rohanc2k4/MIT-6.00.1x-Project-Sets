@@ -1,0 +1,22 @@
+longest_string = []
+current_string = []
+latestletter = 'a'
+for i in range (0, len(s)):
+    if i == len(s)-1:
+        if s[i] > s[i-1]:
+            current_string.append(s[i])
+        if len(current_string) > len(longest_string):
+            longest_string = current_string.copy()
+    elif s[i] < latestletter:
+        latestletter = s[i]
+        if len(current_string) > len(longest_string):
+            longest_string = current_string.copy()
+            current_string.clear()
+            current_string.append(s[i])
+        else:
+            current_string.clear()
+            current_string.append(s[i])
+    else:
+        latestletter = s[i]
+        current_string.append(s[i])
+print("Longest substring in alphabetical order is: " + ''.join(longest_string))
