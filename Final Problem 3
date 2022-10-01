@@ -1,0 +1,10 @@
+def uniqueValues(aDict):
+    keyvals = []
+    allkeys = list(aDict.values())
+    for key in aDict:
+        if allkeys.count(aDict[key]) == 1:
+            keyvals.append(key)
+    if len(keyvals) == 0:
+        return []
+    else:
+        return sorted(keyvals)
