@@ -1,0 +1,7 @@
+def dotProduct(listA, listB):
+    number = 0
+    for i in range (0, len(listA)):
+        if len(listA) == 0:
+            return 0
+        number=number + listA[i]*listB[i]
+    return number
