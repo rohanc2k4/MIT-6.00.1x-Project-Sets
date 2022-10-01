@@ -1,0 +1,8 @@
+def print_without_vowels(s):
+    vowels = 'aeiouAEIOU'
+    s = list(s)
+    duplicate = s[:]
+    for char in s:
+        if char in vowels:
+            duplicate.remove(char)
+    print(''.join(duplicate))
