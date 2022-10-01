@@ -1,0 +1,8 @@
+count = 0
+n=0
+while n < len(s):
+    if s[n] == 'a' or s[n] == 'e' or s[n] == 'i' or s[n] == 'o' or s[n] == 'u':
+        count = count+1
+    n = n+1
+      
+print(count)
