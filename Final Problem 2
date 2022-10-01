@@ -1,0 +1,51 @@
+def longest_run(L):
+  #Assumes L is a list of integers containing at least 2 elements.
+  #Finds the longest run of numbers in L, where the longest run can
+  #either be monotonically increasing or monotonically decreasing. 
+  #In case of a tie for the longest run, choose the longest run 
+  #that occurs first
+    
+    pincrease = []
+    pdecrease = []
+    increasing = []
+    decreasing = []
+    for i in range (0, len(L)):
+        if i == 0:
+            pass
+        else:
+            if L[i] > L[i-1]:
+                if L[i-1] not in pincrease:
+                    pincrease.append(L[i-1])
+                pincrease.append(L[i])
+                if len(pdecrease)>len(decreasing):
+                    decreasing = pdecrease[:]
+                pdecrease.clear()
+            if L[i] < L[i-1]:
+                if L[i-1] not in pdecrease:
+                    pdecrease.append(L[i-1])
+                pdecrease.append(L[i])
+                if len(pincrease)>len(increasing):
+                    increasing = pincrease[:]
+                pincrease.clear()
+            if L[i] == L[i-1]:
+                if L[i-1] not in pincrease:
+                    pincrease.append(L[i-1])
+                if L[i-1] not in pdecrease:
+                    pdecrease.append(L[i-1])
+                pincrease.append(L[i])
+                pdecrease.append(L[i])
+    if len(pdecrease)>=len(decreasing):
+        decreasing = pdecrease[:]
+        pdecrease.clear()
+    if len(pincrease)>=len(increasing):
+        increasing = pincrease[:]
+        pincrease.clear()
+    if len(increasing) > len(decreasing):
+        return sum(increasing)
+    elif len(decreasing) > len(increasing):
+        return sum(decreasing) 
+    else:
+        if L.index(increasing[0]) < L.index(decreasing[0]):
+            return sum(increasing)
+        else:
+            return sum(decreasing)
